@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>webTop - online desktop</title>
+		<meta name="description" content="">
+		<meta name="author" content="vooydzig">
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		
+		<link rel="stylesheet" href="static/css/layout.css" />
+	    <link rel="stylesheet" href="static/css/bootstrap.min.css" />
+	    
+		<script src="static/js/jquery-1.10.2.min.js"></script>
+		<script src="static/js/jquery-ui.min.js"></script>
+		
+		<script src="static/js/webtop.widget.js"></script>
+		<script>
+			$(function() {
+				var $webtop = $(".this").webtop({
+					data: [
+						{ id: 0, name: "Folder", type: "folder"},
+						{ id: 1, name: "Image", type: "image", link:  "http://1.bp.blogspot.com/_MjsO5PhVvgo/TLC_zvp2ICI/AAAAAAAABUo/r-iTRcp-HZ8/s320/World_Scotland_Dumfriesshire_Hills_007810_.jpg"},
+						{ id: 2, name: "Link", type: "link", link: "http://www.google.com" },
+						{ id: 3, name: "Other", type: "other", link: "http://www.google.com" },
+					],
+					grid: false,
+					onDragStart: function(e, id){
+						console.log("drag start, id=", id);
+					},
+				    onDragStop: function(e, id){
+						console.log("drag stop, id= ", id);
+					},
+					onIconClicked: function(e, id){
+						console.log("icon clicked, id= ", id);
+					},
+				    onFolderClicked: function(e, id){
+						console.log("folder clicked, id= ", id);
+					},
+					onFolderDropped: function(e, folder_id, item_id){
+						console.log("item dropped on folder, folder id= ", folder_id, " item_id=", item_id);
+					}, 
+					onTrashed: function(e, id) {
+						console.log("item trashed, id= ", id);
+					}
+				});
+		    });
+		    
+		</script>
+	</head>
+
+	<body>
+		<div style="padding-left:50px;">
+			<h1>WebTop - jQuery desktop plugin</h1>
+			<div class="this"></div>
+			<h3>&copy; Tomek Wójcik</h3>
+		</div>
+	</body>
+</html>
